@@ -1,0 +1,44 @@
+---
+
+- name: Install chromium
+  apt:
+    name: "chromium-browser"
+    state: present
+  become: yes
+  tags: [install]
+  when: chrome-flavor == "chromium"
+
+- name: Download google-chrome
+  get_url:
+    url: "{{ buku_download_url }}"
+    dest: /tmp/google-chrome.deb
+  tags: [install]
+  when: chrome-flavor == "google-chrome"
+
+- name: Install google-chrome
+  apt:
+    deb: "/tmp/google-chrome.deb"
+  become: yes
+  tags: [install]
+  when: chrome-flavor == "google-chrome"
+
+- name: Setup skel directory
+  file:
+    path: "/etc/skel/Desktop"
+    state: directory
+    mode: 0755
+  tags: [config]
+
+- name: Copy .desktop file
+  copy:
+    src:  "kibana.desktop"
+    dest: "/etc/skel/Desktop/kibana.desktop"
+  tags: [config]
+
+- name: Remove deb file after installation
+  file:
+    path: "/tmp/google-chrome.deb"
+    state: absent
+  tags: [cleanup]
+  when: chrome-flavor == "google-chrome"
+

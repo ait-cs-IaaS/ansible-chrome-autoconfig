@@ -1,6 +1,6 @@
 galaxy_info:
   author: Benjamin Akhras
-  description: Installs chromium and buku.
+  description: Installs chromium or google-chrome.
   company: Austrian Institute of Technology
 
   license: license (GPLv2, CC-BY, etc)

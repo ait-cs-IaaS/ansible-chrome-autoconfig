@@ -10,7 +10,7 @@
 
 - name: Download google-chrome
   get_url:
-    url: "{{ buku_download_url }}"
+    url: "{{ google_chrome_download_url }}"
     dest: /tmp/google-chrome.deb
   tags: [install]
   when: flavor == "google-chrome"

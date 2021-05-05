@@ -1,2 +1,3 @@
 ---
 flavor: 'google-chrome'
+desktop_starturl: 'https://kibana.sec.organisation.cyberrange.at:5601'

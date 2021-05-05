@@ -30,7 +30,7 @@
   tags: [config]
 
 - name: Copy .desktop file
-  copy:
+  template:
     src:  "kibana.desktop"
     dest: "/etc/skel/Desktop/kibana.desktop"
   tags: [config]

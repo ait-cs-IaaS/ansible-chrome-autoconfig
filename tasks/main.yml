@@ -27,12 +27,14 @@
     path: "/etc/skel/Desktop"
     state: directory
     mode: 0755
+  become: yes
   tags: [config]
 
 - name: Copy .desktop file
   template:
-    src:  "kibana.desktop"
-    dest: "/etc/skel/Desktop/kibana.desktop"
+    src:  "chrome.desktop"
+    dest: "/etc/skel/Desktop/{{ desktop_file_name }}.desktop"
+  become: yes
   tags: [config]
 
 - name: Remove deb file after installation

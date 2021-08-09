@@ -32,8 +32,8 @@
 
 - name: Copy .desktop file
   template:
-    src:  "kibana.desktop"
-    dest: "/etc/skel/Desktop/kibana.desktop"
+    src:  "chrome.desktop"
+    dest: "/etc/skel/Desktop/{{ desktop_file_name }}.desktop"
   become: yes
   tags: [config]
 

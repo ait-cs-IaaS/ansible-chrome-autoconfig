@@ -1,6 +1,11 @@
 ---
 google_chrome_download_url: "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
-flavor: 'google-chrome'
-desktop_starturl: 'chrome://apps'
-desktop_file_name: 'chrome'
+chrome_flavor: 'google-chrome'
+chrome_desktop_starturl: 'chrome://apps'
+chrome_desktop_file_name: chrome
+chrome_desktop_name: Chrome
+chrome_desktop_bin: /usr/bin/google-chrome-stable
+chrome_desktop_chromium_bin: /usr/bin/chromium-browser
+
+chrome_install_desktop_skel: yes
 

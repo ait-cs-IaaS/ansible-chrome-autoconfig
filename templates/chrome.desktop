@@ -1,23 +1,23 @@
 [Desktop Entry]
 Version=1.0
-Name=Google Chrome
+Name={{ 'Google Chrome' if chrome_flavor == 'google-chrome' else 'Chromium Web Browser' }}
 GenericName=Web Browser
 Comment=Access the Internet
-Exec=/usr/bin/google-chrome-stable {{ desktop_starturl }}
+Exec={{ chrome_desktop_bin if chrome_flavor == 'google-chrome' else chrome_desktop_chromium_bin }} {{ chrome_desktop_starturl }}
 StartupNotify=true
 Terminal=false
-Icon=google-chrome
+Icon={{ 'google-chrome' if chrome_flavor == 'google-chrome' else 'chromium-browser' }}
 Type=Application
 Categories=Network;WebBrowser;
 MimeType=application/pdf;application/rdf+xml;application/rss+xml;application/xhtml+xml;application/xhtml_xml;application/xml;image/gif;image/jpeg;image/png;image/webp;text/html;text/xml;x-scheme-handler/ftp;x-scheme-handler/http;x-scheme-handler/https;
 Actions=new-window;new-private-window;
 
-Name[C]=SOC Dashboard
+Name[C]={{ chrome_desktop_name }}
 
 [Desktop Action new-window]
 Name=New Window
-Exec=/usr/bin/google-chrome-stable
+Exec={{ chrome_desktop_bin if chrome_flavor == 'google-chrome' else chrome_desktop_chromium_bin }}
 
 [Desktop Action new-private-window]
 Name=New Incognito Window
-Exec=/usr/bin/google-chrome-stable --incognito
+Exec={{ chrome_desktop_bin if chrome_flavor == 'google-chrome' else chrome_desktop_chromium_bin }} --incognito

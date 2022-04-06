@@ -7,5 +7,4 @@ chrome_desktop_name: Chrome
 chrome_desktop_bin: /usr/bin/google-chrome-stable
 chrome_desktop_chromium_bin: /usr/bin/chromium-browser
 
-chrome_install_desktop_skel: yes
-
+chrome_install_desktop_skel: true

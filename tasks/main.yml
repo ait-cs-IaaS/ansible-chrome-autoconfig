@@ -1,49 +1,48 @@
 ---
-
 - name: Install chromium
-  apt:
+  ansible.builtin.apt:
     name: "chromium-browser"
     state: present
-  become: yes
+  become: true
   tags: [install]
   when: chrome_flavor == "chromium"
 
 - name: Download google-chrome
-  get_url:
+  ansible.builtin.get_url:
     url: "{{ google_chrome_download_url }}"
     dest: /tmp/google-chrome.deb
+    mode: 0755
   tags: [install]
   when: chrome_flavor == "google-chrome"
 
 - name: Install google-chrome
-  apt:
+  ansible.builtin.apt:
     deb: "/tmp/google-chrome.deb"
-  become: yes
+  become: true
   tags: [install]
   when: chrome_flavor == "google-chrome"
 
 - name: Setup skel directory
-  file:
+  ansible.builtin.file:
     path: "/etc/skel/Desktop"
     state: directory
     mode: 0755
   when: chrome_install_desktop_skel
-  become: yes
+  become: true
   tags: [config]
 
 - name: Copy .desktop file
-  template:
-    src:  "chrome.desktop"
+  ansible.builtin.template:
+    src: "chrome.desktop"
     dest: "/etc/skel/Desktop/{{ chrome_desktop_file_name }}.desktop"
     mode: "0751"
   when: chrome_install_desktop_skel
-  become: yes
+  become: true
   tags: [config]
 
 - name: Remove deb file after installation
-  file:
+  ansible.builtin.file:
     path: "/tmp/google-chrome.deb"
     state: absent
   tags: [cleanup]
   when: chrome_flavor == "google-chrome"
-

@@ -1,12 +1,15 @@
 galaxy_info:
+  role_name: chrome_autoconfig
   author: Benjamin Akhras
   description: Installs chromium or google-chrome.
   company: Austrian Institute of Technology
 
-  license: license (GPLv2, CC-BY, etc)
+  license: GPL-3.0
 
-  min_ansible_version: 1.2
-
-  galaxy_tags: []
-
-dependencies: []
+  min_ansible_version: 2.1.0
+  platforms:
+    - name: Ubuntu
+      versions:
+        - bionic
+        - focal
+  galaxy_tags: ["chrome", "browser"]
